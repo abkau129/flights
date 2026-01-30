@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Airways | Book Your Flight</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #ff9800;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc80;
+            border-bottom: 2px solid #ff9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+            padding: 2rem 5%;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('https://jtaviation.in/blog/images/402-289523.jpg') no-repeat center center/cover;
+            /* REPLACE THE ABOVE IMAGE URL WITH YOUR OWN: https://jtaviation.in/blog/images/402-289523.jpg */
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #1a237e;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        /* Flash Button - Light Orange */
+        .flash-button {
+            display: inline-block;
+            background: linear-gradient(to right, #FFB74D, #FF9800);
+            color: #1a237e;
+            padding: 1rem 2.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .flash-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 152, 0, 0.6);
+            background: linear-gradient(to right, #FFA726, #FB8C00);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4); }
+            50% { box-shadow: 0 6px 30px rgba(255, 152, 0, 0.7); }
+            100% { box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4); }
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a237e;
+            font-size: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid #FF9800;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #1a237e;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #283593;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a237e;
+            color: #e8eaf6;
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            flex: 2;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .link-group h4 {
+            color: #FFB74D;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        .link-group ul {
+            list-style: none;
+        }
+
+        .link-group ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .link-group ul li a {
+            color: #e8eaf6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link-group ul li a:hover {
+            color: #FFB74D;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #3949ab;
+            font-size: 0.9rem;
+            color: #9fa8da;
+        }
+
+        /* Pop-up Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: 5px solid #FF9800;
+        }
+
+        .modal-content h2 {
+            color: #d32f2f;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #d32f2f;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+            nav ul li {
+                margin-left: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .logo {
+                margin-bottom: 1rem;
+            }
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .footer-links {
+                flex-direction: column;
+            }
+            .link-group {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-plane"></i>
+            <span> Airways</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Why Fly With Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Fly Beyond Imagination</h1>
+            <p>Discover over 500 destinations worldwide with unbeatable comfort, award-winning service, and fares that fit your budget. Your next adventure begins here.</p>
+            <!-- BOOK NOW BUTTON WITH AFFILIATE LINK -->
+            <a href="https://afflat3e3.com/trk/lnk/B4938765-8208-40D1-8410-550F60C0F11B/?o=14430&c=918277&a=773269&k=ECDA2F914831141892E0AC78D30AA374&l=23899" class="flash-button" target="_blank">
+                <i class="fas fa-bolt"></i> BOOK NOW & SAVE
+            </a>
+        </div>
+        <div class="hero-image">
+            <!-- REPLACE THE IMAGE SOURCE BELOW WITH YOUR OWN URL -->
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Modern Airplane in Flight">
+            <p><small>Image Source: Unsplash (Replace with your own: https://jtaviation.in/blog/images/402-289523.jpg)</small></p>
+        </div>
+    </section>
+
+    <!-- Features/Details Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose ?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>Global Network</h3>
+                <p>Access to over 500 destinations across 6 continents. Find the perfect flight whether it's for business or leisure.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-user-friends"></i>
+                <h3>Personalized Service</h3>
+                <p>Our dedicated crew is trained to provide exceptional, personalized service from booking to landing.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safe & Reliable</h3>
+                <p>Ranked among the top 5 safest airlines globally for 10 consecutive years. Your safety is our priority.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tags"></i>
+                <h3>Best Price Guarantee</h3>
+                <p>Found a cheaper fare? We'll match it and give you an additional 10% off your next booking with us.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo">
+                    <i class="fas fa-plane"></i>
+                    <span> Airways</span>
+                </div>
+                <p style="margin-top: 1rem;">Connecting the world, one flight at a time. Experience the sky like never before.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Center</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Flight Status</a></li>
+                        <li><a href="#">Baggage Information</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026  Airways. All rights reserved. | This is a demonstration landing page.</p>
+        </div>
+    </footer>
+
+    <!-- Pop-up Modal -->
+    <div class="modal-overlay" id="discountModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h2>LIMITED TIME OFFER!</h2>
+            <p style="font-size: 1.5rem; font-weight: bold; margin: 1.5rem 0;">Get <span style="color: #d32f2f; font-size: 2rem;">40% OFF</span> on your first booking!</p>
+            <p>Hurry! This exclusive offer expires soon. Click the button below to claim your discount and book your dream flight.</p>
+            <!-- POP-UP BUTTON WITH AFFILIATE LINK -->
+            <a href="https://afflat3e3.com/trk/lnk/B4938765-8208-40D1-8410-550F60C0F11B/?o=14430&c=918277&a=773269&k=ECDA2F914831141892E0AC78D30AA374&l=23899" class="flash-button" target="_blank" style="font-size: 1.2rem; padding: 0.8rem 2rem;">
+                <i class="fas fa-gift"></i> CLAIM 40% DISCOUNT
+            </a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Offer valid for new bookings only. Terms and conditions apply.</p>
+        </div>
+    </div>
+
+    <script>
+        // Pop-up Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('discountModal');
+            const closeBtn = document.getElementById('closeModal');
+
+            // Show modal after 5 seconds
+            setTimeout(function() {
+                modal.style.display = 'flex';
+            }, 5000);
+
+            // Close modal when X is clicked
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside the content
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
